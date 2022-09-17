@@ -1,6 +1,6 @@
 const nodes = {
   nodeDataArray: [
-    { key: 0, text: 'Een', color: 'lightblue', loc: '0 0' },
+    { key: 0, text: 'Een', color: 'lightblue', loc: '0 0', width: 100, height: 50 },
     { key: 1, text: 'twee', color: 'orange', loc: '150 0' },
     { key: 2, text: 'Drie', color: 'lightgreen', loc: '150 150' },
     { key: 3, text: 'vier', color: 'pink', loc: '0 150' },

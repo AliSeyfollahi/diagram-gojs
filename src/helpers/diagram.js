@@ -47,30 +47,22 @@ export const initDiagram = () => {
               "ButtonBorder.fill": "white",
               "_buttonFillOver": "skyblue"
             },
-            $(go.TextBlock, "Change Color"),
-            { click: changeColor })
+            $(go.TextBlock, "Change Size"),
+            { click: changeSize })
           // more ContextMenuButtons would go here
         )  // end Adornment
     }
     );
 
-  function changeColor(e, obj) {
+  function changeSize(e, obj) {
     diagram.commit(function (d) {
-      // get the context menu that holds the button that was clicked
       var contextmenu = obj.part;
-      // get the node data to which the Node is data bound
       var nodedata = contextmenu.data;
-      // compute the next color for the node
-      var newcolor = "lightblue";
-      switch (nodedata.color) {
-        case "lightblue": newcolor = "lightgreen"; break;
-        case "lightgreen": newcolor = "lightyellow"; break;
-        case "lightyellow": newcolor = "orange"; break;
-        case "orange": newcolor = "lightblue"; break;
-      }
-      // modify the node data
-      // this evaluates data Bindings and records changes in the UndoManager
-      d.model.set(nodedata, "color", newcolor);
+
+      const newSize = {}
+      
+      d.model.set(nodedata, "width", newSize.width);
+      d.model.set(nodedata, "height", newSize.height);
     }, "changed color");
   }
 
@@ -89,19 +81,7 @@ export const initDiagram = () => {
           return o.diagram.commandHandler.canRedo();
         }).ofObject()),
       // no binding, always visible button:
-      $("ContextMenuButton",
-        $(go.TextBlock, "New Node"),
-        {
-          click: function (e, obj) {
-            e.diagram.commit(function (d) {
-              var data = {};
-              d.model.addNodeData(data);
-              let part = d.findPartForData(data);  // must be same data reference, not a new {}
-              // set location to saved mouseDownPoint in ContextMenuTool
-              part.location = d.toolManager.contextMenuTool.mouseDownPoint;
-            }, 'new node');
-          }
-        })
+      
     );
 
   return diagram;
