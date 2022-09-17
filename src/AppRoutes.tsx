@@ -2,11 +2,11 @@ import {
   Route,
   Switch
 } from "react-router-dom"
-import Home from "./pages/Home/Home"
+import Diagram from "./pages/Diagram/Diagram"
 
 const AppRoutes = () => (
   <Switch>
-    <Route path="/" component={Home} />
+    <Route path="/" component={Diagram} />
   </Switch>
 
 )

@@ -4,20 +4,24 @@ import {
 import { Container } from '@mui/material';
 import "./App.scss"
 import AppRoutes from './AppRoutes';
+import { Provider } from 'react-redux'
+import store from './store'
 
 function App() {
   return (
-    <main id="main-app">
-      <header id="main-header"></header>
+    <Provider store={store}>
+      <main id="main-app">
+        <header id="main-header"></header>
 
-      <Container id="main-container" component="section">
-        <Router>
-          <AppRoutes />
-        </Router>
-      </Container>
+        <Container id="main-container" component="section">
+          <Router>
+            <AppRoutes />
+          </Router>
+        </Container>
 
-      <footer id="main-footer"></footer>
-    </main>
+        <footer id="main-footer"></footer>
+      </main>
+    </Provider>
   );
 }
 
